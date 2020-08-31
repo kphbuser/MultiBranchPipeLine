@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Git') {
             steps {
-                git 'https://github.com/kphbuser/Hello-world.git'
+                git 'https://github.com/kphbuser/MultiBranchPipeLine.git'
             }
         }
         stage('maven') {
