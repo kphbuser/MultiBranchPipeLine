@@ -1,0 +1,35 @@
+pipeline {
+    agent any 
+    tools {
+        maven "maven2"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Test') {
+	when {branch 'master'}
+            steps{
+                echo 'Testing master branch'
+            }
+        }
+        stage('Deploy') {
+	when {branch 'Sprint1'}
+            steps {
+                echo 'Deploy'
+            }
+        }
+        stage('Git') {
+            steps {
+                git 'https://github.com/kphbuser/Hello-world.git'
+            }
+        }
+        stage('maven') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+    }
+}
